@@ -1,7 +1,7 @@
 package history
 
 import (
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // StickyQueue models Temporal's sticky-task queues.

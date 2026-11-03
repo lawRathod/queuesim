@@ -1,5 +1,5 @@
 // Package temporal models Temporal's task-queue machinery (matching,
-// history) as Services built on the GoDES modeling library (ADR-093). The
+// history) as Services built on the queuesim modeling library (originally ADR-093). The
 // model is mechanism-faithful to the real Temporal server: every modeled
 // mechanism carries one of four traceability labels — Pinned (a direct
 // `temporal/` submodule file:line source; component ↔ file:line map in

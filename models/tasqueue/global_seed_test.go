@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/law/GoDES/seed"
-	"github.com/law/GoDES/simtest"
+	"github.com/lawRathod/queuesim/godes/seed"
+	"github.com/lawRathod/queuesim/godes/simtest"
 )
 
 // globalSeedLegConfig is the tasqueue model-leg config the global-seed tests

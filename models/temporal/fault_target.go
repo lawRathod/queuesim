@@ -1,7 +1,7 @@
 package temporal
 
 import (
-	"github.com/law/GoDES/faultsched"
+	"github.com/lawRathod/queuesim/godes/faultsched"
 	"github.com/lawRathod/queuesim/model"
 	"github.com/lawRathod/queuesim/models/temporal/faults"
 )

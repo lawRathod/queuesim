@@ -1,7 +1,11 @@
-# GoDES concrete models
+# Concrete models
 
 This directory holds **concrete models** of real distributed systems, built
-_on_ the GoDES modeling library. The split is:
+_on_ the queuesim modeling library. The split is:
+
+> **Provenance.** These docs came from the GoDES project this repository was
+> extracted from; ADR references are kept as design history. The engine is
+> vendored under [`godes/`](../godes/README.md).
 
 - `model/` (singular) — the **modeling library**: general primitives
   (TaskQueue, Processor, Network, Worker, Poller, RetryController, faults,

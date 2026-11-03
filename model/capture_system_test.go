@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // TestSystemCaptureSeamDisabled asserts EnableCapture=false leaves the

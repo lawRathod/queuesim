@@ -3,7 +3,7 @@ package model
 import (
 	"testing"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // ---- D4 (plan 2026-08-12): SetEndMs + Revive ----

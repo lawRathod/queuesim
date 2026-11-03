@@ -3,7 +3,7 @@ package tasqueue
 import (
 	"strconv"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 	"github.com/lawRathod/queuesim/model"
 	"github.com/lawRathod/queuesim/model/capture"
 )

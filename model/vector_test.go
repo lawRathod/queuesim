@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/law/GoDES/observe"
+	"github.com/lawRathod/queuesim/godes/observe"
 )
 
 // TestVectorActiveAt: half-open window [start, start+duration); duration 0

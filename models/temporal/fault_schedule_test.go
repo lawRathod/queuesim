@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/law/GoDES/faultsched"
+	"github.com/lawRathod/queuesim/godes/faultsched"
 	"github.com/lawRathod/queuesim/model"
 )
 

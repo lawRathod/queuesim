@@ -1,6 +1,6 @@
-# GoDES modeling library
+# The modeling library
 
-`model` is the **modeling library** of GoDES: general, deterministic
+`model` is the **modeling library** of queuesim: general, deterministic
 primitives for building discrete-event queue-network models of distributed
 systems, plus a first-class authoring surface (`Service`/`System`) that turns
 those primitives into runnable, observable models.
@@ -9,6 +9,11 @@ This is the *library*, not a model of any particular system. Concrete models
 built on it live in [`models/`](../models/README.md): `models/temporal` and
 `models/tasqueue` are the worked examples, mechanism-faithful to their real
 upstream systems.
+
+> **Provenance.** This document came from the GoDES project this repository
+> was extracted from. References to ADRs and internal tracks are kept because
+> they record why the semantics are what they are. The engine itself is
+> vendored under [`godes/`](../godes/README.md).
 
 Two mental models matter before you write anything:
 
@@ -21,7 +26,7 @@ Two mental models matter before you write anything:
 
 ---
 
-## What modeling in GoDES looks like
+## What modeling looks like
 
 A `Task` is a unit of work flowing through the model: `{ID, Attempt, Class,
 BornMs}`. A model is a graph of named components that receive, buffer,
@@ -218,8 +223,7 @@ Fault injection is first-class. Two idioms:
 - **Modeling code that is not a queueing/mechanism dynamic.** The library
   models throughput, backlog, latency, retries, and their failure modes. If
   your question is about byte-level protocol behavior, memory, or real code
-  execution, use a different leg of GoDES (the synctest bubble) — not a
-  queue model.
+  execution, use a different kind of simulation — not a queue model.
 - **Reproducing every server constant.** A model is an abstraction. The
   discipline is to pin the *mechanisms that matter* to the real source
   (see the `contract_test.go` file:line pins in `models/temporal`) and

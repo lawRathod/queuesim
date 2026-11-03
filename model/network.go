@@ -1,8 +1,8 @@
 package model
 
 import (
-	"github.com/law/GoDES/core"
-	"github.com/law/GoDES/core/dists"
+	"github.com/lawRathod/queuesim/godes/core"
+	"github.com/lawRathod/queuesim/godes/core/dists"
 )
 
 // NetworkConfig configures a lossy/delayed link between components.

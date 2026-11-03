@@ -5,14 +5,14 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/law/GoDES/core"
-	"github.com/law/GoDES/faultsched"
+	"github.com/lawRathod/queuesim/godes/core"
+	"github.com/lawRathod/queuesim/godes/faultsched"
+	"github.com/lawRathod/queuesim/godes/observe"
 	"github.com/lawRathod/queuesim/model"
 	"github.com/lawRathod/queuesim/model/capture"
 	"github.com/lawRathod/queuesim/models/temporal/components/history"
 	"github.com/lawRathod/queuesim/models/temporal/components/matcher"
 	"github.com/lawRathod/queuesim/models/temporal/components/worker"
-	"github.com/law/GoDES/observe"
 )
 
 // runtime is the shared mediator between the matching and history

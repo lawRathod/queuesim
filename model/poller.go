@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // PollerConfig configures a Poller.

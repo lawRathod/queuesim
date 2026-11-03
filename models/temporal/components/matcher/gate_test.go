@@ -3,7 +3,7 @@ package matcher
 import (
 	"testing"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // gateSim builds a Simulation for MatchQueue mechanism tests.

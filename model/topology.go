@@ -3,7 +3,7 @@ package model
 import (
 	"sort"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // hookedTick is a pump hook at a deterministic position.
@@ -29,7 +29,7 @@ type Topology struct {
 	queues     map[string]*TaskQueue
 	processors map[string]*Processor
 	networks   map[string]*Network
-	workers    map[string]*Worker // worker fleets (long-poll on a queue)
+	workers    map[string]*Worker      // worker fleets (long-poll on a queue)
 	queueProcs map[string][]*Processor // queue name → processors fed by its drained tasks
 	injectors  []FaultInjector
 	pumpMs     int64
@@ -38,7 +38,7 @@ type Topology struct {
 	// Cross-topology edges (WP2): child out-port → parent/sibling destination.
 	childOutEdges map[string]map[string]*boundaryEdge // childName -> portName -> edge
 	feedEdges     map[string]map[string]*TaskQueue    // childName -> portName -> srcQueue (parent → child in-port)
-	hooks         []hookedTick                         // per-level custom ticks sorted by pos (2.5 reserved for Matcher)
+	hooks         []hookedTick                        // per-level custom ticks sorted by pos (2.5 reserved for Matcher)
 }
 
 type boundaryEdge struct {
@@ -48,23 +48,23 @@ type boundaryEdge struct {
 
 // TopologyBuilder accumulates nodes and links before Run.
 type TopologyBuilder struct {
-	sim        *core.Simulation
-	path       string
-	parent     *TopologyBuilder
-	children   map[string]*TopologyBuilder
-	outPorts   map[string]*TaskQueue
-	inPorts    map[string]*TaskQueue
-	queues     map[string]*TaskQueue
-	processors map[string]*Processor
-	networks   map[string]*Network
-	workers    map[string]*Worker
-	queueProcs map[string][]*Processor
-	injectors  []FaultInjector
-	pumpMs     int64
-	endMs      int64
-	pumpSet    bool
-	endSet     bool
-	vector     *DecisionVector
+	sim           *core.Simulation
+	path          string
+	parent        *TopologyBuilder
+	children      map[string]*TopologyBuilder
+	outPorts      map[string]*TaskQueue
+	inPorts       map[string]*TaskQueue
+	queues        map[string]*TaskQueue
+	processors    map[string]*Processor
+	networks      map[string]*Network
+	workers       map[string]*Worker
+	queueProcs    map[string][]*Processor
+	injectors     []FaultInjector
+	pumpMs        int64
+	endMs         int64
+	pumpSet       bool
+	endSet        bool
+	vector        *DecisionVector
 	childOutEdges map[string]map[string]*boundaryEdge
 	feedEdges     map[string]map[string]*TaskQueue
 	hooks         []hookedTick

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/law/GoDES/core"
-	"github.com/law/GoDES/core/dists"
+	"github.com/lawRathod/queuesim/godes/core"
+	"github.com/lawRathod/queuesim/godes/core/dists"
 	"github.com/lawRathod/queuesim/model/capture"
 	"github.com/lawRathod/queuesim/model/monitor"
 )

@@ -3,7 +3,7 @@ package model
 import (
 	"testing"
 
-	"github.com/law/GoDES/core/dists"
+	"github.com/lawRathod/queuesim/godes/core/dists"
 )
 
 func TestNetworkDeliveryOrder(t *testing.T) {

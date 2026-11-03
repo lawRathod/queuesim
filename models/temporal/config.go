@@ -1,8 +1,8 @@
 package temporal
 
 import (
-	"github.com/law/GoDES/core"
-	"github.com/law/GoDES/faultsched"
+	"github.com/lawRathod/queuesim/godes/core"
+	"github.com/lawRathod/queuesim/godes/faultsched"
 	"github.com/lawRathod/queuesim/model"
 	"github.com/lawRathod/queuesim/models/temporal/components/matcher"
 )

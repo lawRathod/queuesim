@@ -13,7 +13,7 @@
 // to off, so an Injector never leaves stale fault state behind.
 package faults
 
-import "github.com/law/GoDES/core"
+import "github.com/lawRathod/queuesim/godes/core"
 
 // Kind identifies a fault type.
 type Kind string

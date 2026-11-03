@@ -149,8 +149,6 @@ func dotNodeID(path, name string) string {
 	return dotID(path + "." + name)
 }
 
-
-
 // dotID sanitizes a name for use as a Graphviz node ID (alphanumeric +
 // underscore; everything else replaced by underscore). Names in GoDES are
 // already safe (queue names, processor names), but this guards against

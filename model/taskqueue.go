@@ -3,7 +3,7 @@ package model
 import (
 	"math"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // TaskClass routes a task to its per-class queue partition (plan 2026-08-12

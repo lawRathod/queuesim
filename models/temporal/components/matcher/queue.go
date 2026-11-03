@@ -1,8 +1,8 @@
 package matcher
 
 import (
-	"github.com/law/GoDES/core"
-	"github.com/law/GoDES/core/dists"
+	"github.com/lawRathod/queuesim/godes/core"
+	"github.com/lawRathod/queuesim/godes/core/dists"
 )
 
 // TaskClass distinguishes the task kinds that traverse the Temporal

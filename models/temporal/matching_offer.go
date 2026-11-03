@@ -1,7 +1,7 @@
 package temporal
 
 import (
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // matching_offer.go is the S1 seam home (forwarder caps): the offer/forward

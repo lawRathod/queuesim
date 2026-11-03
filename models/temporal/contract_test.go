@@ -3,7 +3,7 @@ package temporal
 import (
 	"testing"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 	"github.com/lawRathod/queuesim/model"
 	"github.com/lawRathod/queuesim/models/temporal/components/history"
 	"github.com/lawRathod/queuesim/models/temporal/components/matcher"

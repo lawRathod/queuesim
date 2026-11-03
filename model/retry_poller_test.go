@@ -4,7 +4,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // TestRetryBackoffDegenerateMath: non-finite coefficients collapse to the

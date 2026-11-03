@@ -3,8 +3,8 @@ package model
 import (
 	"testing"
 
-	"github.com/law/GoDES/core"
-	"github.com/law/GoDES/core/dists"
+	"github.com/lawRathod/queuesim/godes/core"
+	"github.com/lawRathod/queuesim/godes/core/dists"
 )
 
 // TestTopologyBuilderSimpleNetwork builds: in-queue → processor (fixed

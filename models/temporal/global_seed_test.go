@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/law/GoDES/faultsched"
-	"github.com/law/GoDES/seed"
-	"github.com/law/GoDES/simtest"
+	"github.com/lawRathod/queuesim/godes/faultsched"
+	"github.com/lawRathod/queuesim/godes/seed"
+	"github.com/lawRathod/queuesim/godes/simtest"
 )
 
 // globalSeedLegConfig is the model-leg config both global-seed tests run: a

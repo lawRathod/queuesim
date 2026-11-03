@@ -1,9 +1,9 @@
 package temporal
 
 import (
+	"github.com/lawRathod/queuesim/godes/observe"
 	"github.com/lawRathod/queuesim/model/monitor"
 	"github.com/lawRathod/queuesim/models/temporal/components/matcher"
-	"github.com/law/GoDES/observe"
 )
 
 // TopologyStats is the run-level counter set of a temporal model execution.

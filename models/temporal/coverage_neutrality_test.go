@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/law/GoDES/faultsched"
+	"github.com/lawRathod/queuesim/godes/faultsched"
 )
 
 // This file is the ADR-112 model-leg neutrality gate: the OPTIONAL

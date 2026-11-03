@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>queuesim — watch queue networks think</title>
+  <meta name="description" content="Deterministic, interactive queue-network models of Temporal matching/history and Tasqueue worker pools.">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="name">queue<span>sim</span></span>
+      <span class="tag">deterministic queue-network models</span>
+    </div>
+    <div class="header-spacer"></div>
+    <div class="header-meta" id="header-meta"></div>
+    <div class="run-controls">
+      <label class="seed-field">seed
+        <input type="number" id="seed" value="42" step="1" title="RNG seed. Same config + same seed = identical digest.">
+      </label>
+      <button class="ghost small" id="help-btn" title="What am I looking at?">?</button>
+      <button class="primary" id="run-btn" title="Run this scenario (⌘/Ctrl+Enter)">Run</button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <aside class="sidebar">
+      <div class="knob-panel" id="knob-panel">
+        <div class="knob-panel-head">
+          <div class="section-label">Knobs</div>
+          <button class="ghost small" id="reset-knobs" title="Restore this scenario's preset">reset</button>
+        </div>
+        <div id="knobs"></div>
+      </div>
+    </aside>
+
+    <section class="stage">
+      <div class="chips" id="scenario-chips" role="tablist" aria-label="Scenarios"></div>
+      <div id="scenario-head" class="scenario-head"></div>
+
+      <div class="card" id="diagram-card">
+        <div class="card-head">
+          <h2>Live mechanism map</h2>
+          <span class="hint" id="diagram-hint">bars are normalized to this run's peak</span>
+        </div>
+        <div class="diagram-wrap" id="diagram"></div>
+      </div>
+
+      <div class="card" id="kpi-card">
+        <div class="card-head">
+          <h2>Outcome</h2>
+          <span class="hint" id="kpi-hint"></span>
+        </div>
+        <div class="kpis" id="kpis"></div>
+        <div id="percentiles"></div>
+        <div id="run-status"></div>
+      </div>
+
+      <div class="card" id="insights-card">
+        <div class="card-head">
+          <h2>Observations</h2>
+          <span class="hint">derived from this run, not from a model</span>
+        </div>
+        <div id="insights"></div>
+      </div>
+
+      <div class="card" id="charts-card">
+        <div class="card-head">
+          <h2>Timeline</h2>
+          <span class="hint">click a legend entry to hide a line</span>
+        </div>
+        <div id="charts"></div>
+      </div>
+
+      <div class="card" id="determinism-card">
+        <div class="card-head">
+          <h2>Determinism</h2>
+          <span class="hint">same config + same seed ⇒ byte-identical digest</span>
+        </div>
+        <div class="grid-2">
+          <div>
+            <div class="digest" id="digest">run a scenario to see its digest</div>
+            <div class="actions">
+              <button class="small" id="replay-btn">Verify replay</button>
+              <button class="small" id="sweep-btn">Sweep 8 seeds</button>
+              <button class="small" id="copy-digest">Copy digest</button>
+              <button class="small" id="link-btn">Copy permalink</button>
+              <button class="small" id="copy-cli">Copy CLI</button>
+              <button class="small" id="download-btn">Download trace</button>
+              <button class="small" id="pin-btn" title="Pin this run, then run another config to compare">Pin for compare</button>
+            </div>
+            <div class="status-line wait" id="det-status">Replay reruns the same request and compares the digest.</div>
+          </div>
+          <div>
+            <table class="mini" id="sweep-table">
+              <thead><tr><th>Seed</th><th>Attempts/start</th><th>Peak backlog</th><th>Digest</th></tr></thead>
+              <tbody><tr><td colspan="4" style="color:var(--dim);font-family:var(--sans)">Sweep runs the current config across eight seeds — one config, eight deterministic worlds.</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <footer class="foot">
+        queuesim · the models are deterministic simulations, not real servers · every number on this page is reproducible
+      </footer>
+    </section>
+  </main>
+
+  <div class="playbar" id="playbar">
+    <button class="play-btn" id="play-btn" aria-label="Play or pause">
+      <svg id="play-icon" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg>
+    </button>
+    <div class="scrub">
+      <input type="range" id="scrub" min="0" max="0" step="1" value="0" aria-label="Timeline position">
+      <div class="time" id="time-label">—</div>
+    </div>
+    <label class="speed">speed
+      <select id="speed">
+        <option value="0.5">0.5×</option>
+        <option value="1" selected>1×</option>
+        <option value="2">2×</option>
+        <option value="4">4×</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="busy-veil" id="busy">
+    <div class="busy-box">
+      <div class="spinner"></div>
+      <div class="msg" id="busy-msg"><b>Simulating</b> — deterministic event loop, no wall clock</div>
+    </div>
+  </div>
+
+  <div id="toast" role="alert"></div>
+
+  <dialog id="help">
+    <div class="dialog-inner">
+      <h2>What is queuesim?</h2>
+      <p>Two real distributed-systems designs — <b>Temporal's matching + history machinery</b> and a
+      <b>Tasqueue worker pool</b> — rebuilt as deterministic queue-network models. No containers, no
+      cluster, no wall clock: a seeded event loop advances simulated milliseconds and every mechanism
+      (sync-match, spooling, retries, persistence, fan-out) is a queue you can watch.</p>
+
+      <h3>Why determinism matters</h3>
+      <p>The same configuration and seed produce a byte-identical trace. That makes results debuggable:
+      a surprising number is a reproducible experiment, not a flake. Press <b>Verify replay</b> to rerun
+      the exact request and compare digests, or <b>Sweep seeds</b> to see which conclusions hold across
+      random draws.</p>
+
+      <h3>Reading the page</h3>
+      <ul>
+        <li>The <b>mechanism map</b> animates the live state: bars are queue depths, numbers are
+        instantaneous gauges. The timeline below it is the same run, scrubbable.</li>
+        <li><b>Attempts per start</b> is the retry-amplification headline: 1.0 means a workflow's
+        activity succeeded first try; 3.0 means it took three attempts on average.</li>
+        <li><b>Schedule-to-start latency</b> measures from a task entering matching to a poller taking it.</li>
+        <li>Turn knobs, then press <b>Run</b>. Nothing is hidden: the trace JSON is downloadable.</li>
+        <li><b>Space</b> plays or pauses, <b>← / →</b> step the timeline, <b>⌘/Ctrl+Enter</b>
+        runs. <b>Copy permalink</b> encodes the scenario, seed, knobs, and the moment you are
+        looking at.</li>
+      </ul>
+
+      <h3>Honesty note</h3>
+      <p>These are models, not the real systems. Constants are pinned to the real server where the
+      source defines one, calibrated where it does not, and labeled as such in the model packages.
+      The point is mechanism intuition, not a benchmark.</p>
+
+      <div class="actions"><button class="primary" id="help-close">Got it</button></div>
+    </div>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>

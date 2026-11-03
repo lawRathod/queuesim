@@ -3,11 +3,11 @@ package tasqueue
 import (
 	"fmt"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
+	"github.com/lawRathod/queuesim/godes/seed"
 	"github.com/lawRathod/queuesim/model"
 	"github.com/lawRathod/queuesim/model/capture"
 	"github.com/lawRathod/queuesim/model/monitor"
-	"github.com/law/GoDES/seed"
 )
 
 // Stats mirrors the Tasqueue execution counters. The queue-accounted

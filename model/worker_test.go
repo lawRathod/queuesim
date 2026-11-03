@@ -3,7 +3,7 @@ package model
 import (
 	"testing"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // TestWorkerPullsAndCompletes: a Worker fleet in a builder topology parks
@@ -35,7 +35,7 @@ func TestWorkerPullsAndCompletes(t *testing.T) {
 	sim.ScheduleAt(sim.Now(), func(*core.Simulation) {
 		for i := 0; i < 5; i++ {
 			if !q.Add(Task{ID: uint64(i), Attempt: 1}) {
-			t.Errorf("add %d rejected", i)
+				t.Errorf("add %d rejected", i)
 			}
 		}
 	})

@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // newTestQueue builds a TaskQueue over a fresh seeded simulation.

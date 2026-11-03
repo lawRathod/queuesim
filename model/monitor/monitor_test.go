@@ -149,7 +149,7 @@ func TestMonitorZeroDrawsStructural(t *testing.T) {
 		t.Skipf("go list unavailable: %v", err)
 	}
 	for _, dep := range strings.Fields(string(out)) {
-		if strings.HasPrefix(dep, "github.com/law/GoDES/core") {
+		if strings.HasPrefix(dep, "github.com/lawRathod/queuesim/godes/core") {
 			t.Fatalf("monitor imports core (%s) — zero-draw contract violated", dep)
 		}
 		if strings.Contains(dep, "math/rand") {

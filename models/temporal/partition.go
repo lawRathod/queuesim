@@ -1,7 +1,7 @@
 package temporal
 
 import (
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // childAgeWin is one 100ms window of the per-tick gate measurement on the

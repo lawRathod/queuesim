@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // demoSystem builds the WP1 reference model: a producer service (one out

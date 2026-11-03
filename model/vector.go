@@ -3,7 +3,7 @@ package model
 import (
 	"fmt"
 
-	"github.com/law/GoDES/observe"
+	"github.com/lawRathod/queuesim/godes/observe"
 )
 
 // VectorKind identifies a decision-vector fault kind (ADR-069). Each kind

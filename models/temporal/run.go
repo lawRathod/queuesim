@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
+	"github.com/lawRathod/queuesim/godes/observe"
+	"github.com/lawRathod/queuesim/godes/seed"
 	"github.com/lawRathod/queuesim/model"
 	"github.com/lawRathod/queuesim/model/capture"
-	"github.com/law/GoDES/observe"
-	"github.com/law/GoDES/seed"
 )
 
 // Topology is the thin execution handle over a built model.System: it owns

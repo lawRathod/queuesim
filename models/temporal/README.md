@@ -1,8 +1,8 @@
-# models/temporal — a GoDES model of Temporal's task queues
+# models/temporal — a queue model of Temporal's task queues
 
 A mechanism-faithful model of **Temporal's matching + history machinery** —
 the parts that decide how workflow/activity tasks get from a `StartWorkflow`
-call into a worker and back. It is built on the GoDES modeling library
+call into a worker and back. It is built on the queuesim modeling library
 (`model/`) and models only what mechanically matters for task-queue dynamics:
 task queues, poller fleets, sync-match, retries, persistence, transfer/timer
 processing. Constants are pinned to the real server (`temporal/` submodule)
@@ -243,8 +243,9 @@ server pins.
 ## Run it
 
 ```sh
-cd GoDES
-go test ./models/temporal/...          # tests incl. determinism gates
-go run ./examples/models/temporal_metrics   # calm vs activity-failure storm
-go run ./examples/models/mechanism_map      # capture-derived mechanism map
+# from the queuesim repository root
+go test ./models/temporal/...                 # tests incl. determinism gates
+go run ./cmd/queuesim run -scenario calm      # calm baseline
+go run ./cmd/queuesim run -scenario retry-storm
+go run ./cmd/queuesim serve -open             # explore and tune it live
 ```

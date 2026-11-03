@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/law/GoDES/core"
+	"github.com/lawRathod/queuesim/godes/core"
 )
 
 // TestWriteDotStructure: a small topology (queue → processor → network →
@@ -23,8 +23,8 @@ func TestWriteDotStructure(t *testing.T) {
 	in := b.Queue("in")
 	out := b.Queue("out")
 	link := b.Network("link")
-	b.Feed(in, proc)              // queue -> processor
-	b.Connect(proc, out, link)    // processor -> network -> queue
+	b.Feed(in, proc)           // queue -> processor
+	b.Connect(proc, out, link) // processor -> network -> queue
 	top, err := b.Build()
 	if err != nil {
 		t.Fatalf("Build: %v", err)
@@ -42,9 +42,9 @@ func TestWriteDotStructure(t *testing.T) {
 		"q_out [shape=box, label=\"out\"]",
 		"p_proc [shape=ellipse, label=\"proc\\n[svc 5ms]\"]",
 		"n_link [shape=diamond, label=\"link\\n[2ms drop 0.00]\"]",
-		"q_in -> p_proc",        // feed edge
-		"p_proc -> n_link",      // connect via network
-		"n_link -> q_out",       // network -> queue
+		"q_in -> p_proc",   // feed edge
+		"p_proc -> n_link", // connect via network
+		"n_link -> q_out",  // network -> queue
 	} {
 		if !strings.Contains(dot, want) {
 			t.Errorf("DOT missing %q\n---\n%s", want, dot)
